@@ -49,7 +49,7 @@ public class Main {
     @Fork(value = 1, warmups = 1)
     public void withGenerator() throws IOException {
         BetOffer betOffer = BetOffer.createBetOffer(seed++);
-        StringWriter sw = new StringWriter();
+        StringWriter sw = new StringWriter(512);
         try (JsonGenerator json = jsonFactory.createGenerator(sw)) {
             betOffer.writeJson(json);
         }
